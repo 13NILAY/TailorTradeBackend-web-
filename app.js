@@ -34,6 +34,10 @@ app.use('/client',ClientRouter)
 const ReviewRouter =require("./routes/reviews");
 app.use('/review',ReviewRouter)
 
+
+const paymentRouter = require('./routes/payment');
+app.use('/payment', paymentRouter);
+
 app.listen(port,()=>{
     console.log("Running on port")
     dbconnect();

@@ -9,11 +9,13 @@ const orderSchema=new Schema({
     },
     type:{
         type:String,
-        enum:["Stitchng","Alteration"],
         required:true
     },
-    measurements:{
-        type:String
+    height:{
+        type:Number
+    },
+    width:{
+        type:Number
     },
     instructions:{
         type:String
@@ -30,9 +32,19 @@ const orderSchema=new Schema({
     cloth_images:{
         type:[String]
     },
-    user:{
+    tailor:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'User',
+        ref:'Tailor'
+    },
+    // user:{
+    //     type:mongoose.Schema.Types.ObjectId,
+    //     ref:'User',
+    // },
+    user_name:{
+        type:String
+    },
+    address:{
+        type:String
     },
     total_amount: {
         type: Number,
@@ -40,11 +52,11 @@ const orderSchema=new Schema({
     },
     advance_amount: {
         type: Number,
-        required: true
+        // required: true
     },
     balance_due: {
         type: Number,
-        required: true
+        // required: true
     }
 });
 

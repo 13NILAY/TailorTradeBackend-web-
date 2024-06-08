@@ -3,6 +3,18 @@ const validator = require('validator');
 const Schema=mongoose.Schema 
 
 const tailorSchema = new Schema({
+    Dress:{
+        type:Number
+    },
+    Skirt:{
+        type:Number
+    },
+    Blouse:{
+        type:Number
+    },
+    Pants:{
+        type:Number
+    },
     username: {
         type: String,
         required: true,
@@ -59,6 +71,18 @@ const tailorSchema = new Schema({
         required: true,
         trim: true,
     },
+    // outfitType:[
+    //         {
+    //             name:{
+    //                 type:String
+    //             },
+    //             price:{
+    //                 type:Number
+    //             }
+                
+    //         }
+    // ],
+
     location: {
         type: String,
         required: true,
@@ -79,6 +103,9 @@ const tailorSchema = new Schema({
     refreshToken:{
         type:String,
     },
+    averageRating:{
+        type:Number,
+    }
 }, {
     timestamps: true,
 });

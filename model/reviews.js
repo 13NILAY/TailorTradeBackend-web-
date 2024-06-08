@@ -2,6 +2,10 @@ const mongoose=require("mongoose");
 const Schema =mongoose.Schema;
 
 const reviewSchema =new Schema({
+    tailor:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Tailor',
+    },
     name:{
         type:String,
     },
