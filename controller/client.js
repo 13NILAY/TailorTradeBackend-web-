@@ -2,10 +2,12 @@ const Client = require('../model/client');
 
 const createclient = async (req, res) => {
     try {
+        
+        console.log(req.body);
         const client = new Client(req.body);
         const savedclient = await client.save();
-        res.json(savedclient);
-    } catch (err) {
+        res.status(200).json(savedclient);
+    }catch (err) {
         res.status(400).json({ message: err.message });
     }
 };

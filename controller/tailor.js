@@ -90,11 +90,32 @@ const login = async (req, res) => {
         res.status(500).send(error);
     }
 };
+const getAllTailors = async (req, res) => {
+    try {
+        const Tailors = await Tailor.find();
+        res.json(Tailors);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+const getTailorById = async (req, res) => {
+    try {
+        const tailor = await Tailor.findById(req.params.id);
+        if (tailor === null) {
+            return res.status(404).json({ message: 'Tailor not found' });
+        }
+        res.json(tailor);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 
 
 module.exports={
     signup,
     login,
-    getTailorByEmail
+    getTailorByEmail,
+    getAllTailors,
+    getTailorById
 };
 

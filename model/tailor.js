@@ -92,10 +92,13 @@ const tailorSchema = new Schema({
         type: String, 
         required: true,
     },
-    portfolioPhotos: [{
+    portfolioPhotos: {
         type: String, 
         required: false, 
-    }],
+    },
+    num_reviews:{
+        type:Number
+    },
     skills: {
         fabric: [String],
         clothingType: [String],

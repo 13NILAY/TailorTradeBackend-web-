@@ -10,7 +10,7 @@ const {
 } = require('../controller/order');
 
 
-router.post('/createOrder', createOrder);
+router.post('/orders', createOrder);
 
 router.get('/orders', getAllOrders);
 

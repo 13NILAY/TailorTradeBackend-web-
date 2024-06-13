@@ -2,21 +2,26 @@ const mongoose=require('mongoose');
 const Schema=mongoose.Schema
 
 const clientSchema=new Schema({
-    name:{
+    first_name:{
+        type:String,
+        required:true
+    },
+    last_name:{
         type:String,
         required:true
     },
     address:{
         type:String,
+    },email:{
+        type:String
     },
     phoneno:{
         type:Number,
-        unique:true,
+        // unique:true,
         required:true,
     },
     gender:{
         type:String,
-        enum:["Male","Female","Other"],
         required:true
     },
     pic:{

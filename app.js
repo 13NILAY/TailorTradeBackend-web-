@@ -31,6 +31,9 @@ app.use('/order',OrderRouter)
 const ClientRouter =require('./routes/client')
 app.use('/client',ClientRouter)
 
+const UploadRouter =require('./routes/cloudinary')
+app.use('/api',UploadRouter)
+
 const ReviewRouter =require("./routes/reviews");
 app.use('/review',ReviewRouter)
 

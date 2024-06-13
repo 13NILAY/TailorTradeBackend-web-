@@ -11,6 +11,9 @@ const orderSchema=new Schema({
         type:String,
         required:true
     },
+    product_name:{
+        type:String
+    },
     height:{
         type:Number
     },
@@ -32,32 +35,36 @@ const orderSchema=new Schema({
     cloth_images:{
         type:[String]
     },
+    client:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Client'
+    },
     tailor:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Tailor'
     },
-    // user:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:'User',
-    // },
-    user_name:{
-        type:String
-    },
-    address:{
-        type:String
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User',
     },
     total_amount: {
         type: Number,
         required: true
     },
-    advance_amount: {
-        type: Number,
-        // required: true
-    },
-    balance_due: {
-        type: Number,
-        // required: true
+    status:{
+        type:String,
+        default:"Pending"
     }
+    // advance_amount: {
+    //     type: Number,
+    //     // required: true
+    //  },
+    // balance_due: {
+    //     type: Number,
+    //     // required: true
+    // }
+}, {
+    timestamps: true,
 });
 
 module.exports=mongoose.model('Order',orderSchema)
