@@ -13,16 +13,17 @@ const signup=async(req,res)=>{
         })
         user.password=await bcrypt.hash(user.password,10)
         const savedUserData=await user.save();
-        console.log(savedUserData);
+        // console.log(savedUserData);
         res.status(200).json({
             success:true
         });
 
         
     } catch (error) {
+        console.log(error);
         res.status(500).json({
             success:false,
-            error:error.message,
+            error:error,
         })
     }
 }
@@ -69,7 +70,17 @@ const log= async(req,res)=>{
         res.status(500).send(error)
     }
 }
-
+const getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        if (user === null) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 const getuser=async(req,res)=>{
     try {
         const user=await User.find()
@@ -91,13 +102,27 @@ const deluser=async(req,res)=>{
 }
 const updateuser=async(req,res)=>{
     try {
-        const user=await User.findByIdAndUpdate(req.user._id,req.body,{ new: true })
-        res.send("Update done")
+        console.log(req.body);
+        // const user=await User.findByIdAndUpdate(req.user._id,req.body,{ new: true })
+        const user=await User.findOneAndUpdate({email:req.body.formData1.email},req.body.formData1,{new:true});
+        res.status(200).json(user);
     } catch (error) {
-        res.status(500).send("Upadation not done")
+        res.status(500).json("Upadation not done")
     }
 }
+const getUserByEmail = async (req, res) => {
+    try {
+        console.log(req.body.email);
+        const user = await User.findOne({email:req.body.email});
+        if (user === null) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
 module.exports={
     signup,
-    log,getuser,deluser,updateuser
+    log,getuser,deluser,updateuser,getUserByEmail,getUserById
 }

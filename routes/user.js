@@ -1,5 +1,5 @@
 const {signup}=require('../controller/user')
-const{log,getuser,deluser,updateuser}=require('../controller/user')
+const{log,getuser,deluser,updateuser,getUserByEmail,getUserById}=require('../controller/user')
 const authenticatetoken=require('../middleware/authenticate')
 const {handleRefreshTokenUser} =require('../controller/authC');
 const express = require('express')
@@ -9,7 +9,9 @@ router.post('/signup',signup);
 router.post('/login',log);
 router.get('/refreshToken',handleRefreshTokenUser);
 router.get('/get',authenticatetoken,getuser);
+router.post('/getUser',getUserByEmail);
+router.get("/:id",getUserById);
 router.delete('/delete',authenticatetoken,deluser);
-router.patch('/update',authenticatetoken,updateuser);
+router.put('/update',updateuser);
 
 module.exports=router

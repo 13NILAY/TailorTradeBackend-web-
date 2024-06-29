@@ -9,8 +9,6 @@ const cloudinaryConfig = {
   api_secret: process.env.api_secret
 };
 
-console.log('Cloudinary Config:', cloudinaryConfig); // Debugging: Print Cloudinary config
-
 cloudinary.config(cloudinaryConfig);
 
 console.log(process.env.api_secret);
