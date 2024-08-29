@@ -37,7 +37,6 @@ app.use('/api',UploadRouter)
 const ReviewRouter =require("./routes/reviews");
 app.use('/review',ReviewRouter)
 
-
 const paymentRouter = require('./routes/payment');
 app.use('/payment', paymentRouter);
 

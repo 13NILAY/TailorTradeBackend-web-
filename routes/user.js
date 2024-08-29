@@ -8,7 +8,7 @@ const router = express.Router()
 router.post('/signup',signup);
 router.post('/login',log);
 router.get('/refreshToken',handleRefreshTokenUser);
-router.get('/get',authenticatetoken,getuser);
+router.get('/get',getuser);
 router.post('/getUser',getUserByEmail);
 router.get("/:id",getUserById);
 router.delete('/delete',authenticatetoken,deluser);
